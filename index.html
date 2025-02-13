@@ -1,23 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Portfolio</title>
-	<style>
-		.centered {
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			height: 100vh;
-			font-size: 2rem;
-			font-weight: bold;
-		}
-	</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: space-between; /* 왼쪽과 오른쪽 끝에 배치 */
+            align-items: center; /* 항목들이 세로로 중앙 정렬 */
+            width: 100%;
+        }
+
+        .top-left {
+            font-size: 4rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center; /* 항목들이 수평으로 정렬 */
+            padding-left: 10px; /* 왼쪽에 간격 추가 */
+            width: 100%;
+            flex-direction: row; /* 가로로 배치되도록 유지 */
+            border-bottom: 2px solid black; /* 수평선 추가 */
+        }
+        
+        .items {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-left: 20px; /* 항목들 사이 간격 */
+        }
+
+        .login-signup {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-left: 580px; /* 매장안내와 로그인/회원가입 사이 간격 추가 */
+        }
+    </style>
 </head>
 <body>
-	<div class="centered">BBDO</div>
+    <div class="top-left">
+        BBDO
+        <span class="items">랭킹</span>
+        <span class="items">상품</span>
+        <span class="items">셀렉샵</span>
+        <span class="items">메거진</span>
+        <span class="items">스타일 룸</span>
+        <span class="items">이벤트/세일</span>
+        <span class="items">매장안내</span>
+        <span class="items login-signup">로그인/회원가입</span>
+    </div>
 </body>
 </html>
-

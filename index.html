@@ -37,19 +37,48 @@
             margin-left: 580px;
         }
 
-        .image-container {
-            width: 100%; /* 이미지가 전체 너비를 차지하도록 */
+        .slider-container {
+            width: 100%;
             display: flex;
-            justify-content: center; /* 이미지를 중앙에 배치 */
-            margin-top: 20px; /* 위쪽 간격 */
-            gap: 20px; /* 이미지들 간 간격 */
+            justify-content: center;
+            margin-top: 20px;
+            position: relative;
+            overflow: hidden;
+            max-width: 1200px; /* 슬라이드가 차지할 최대 너비를 1200px로 설정 */
         }
 
-        .image-container img {
-            max-width: 100%; /* 이미지를 화면 크기에 맞게 조정 */
-            height: auto; /* 비율을 유지하면서 크기를 조정 */
-            width: 580px; /* 고정된 너비 설정 */
+        .slider {
+            display: flex;
+            transition: transform 0.5s ease;
         }
+
+        .slider img {
+            max-width: 100%;
+            height: auto;
+            width: 1200px; /* 이미지 크기 1200px로 설정 */
+        }
+
+        /* 좌/우 버튼 스타일 */
+        .prev, .next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2rem;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .prev {
+            left: 10px;
+        }
+
+        .next {
+            right: 10px;
+        }
+
     </style>
 </head>
 <body>
@@ -65,12 +94,43 @@
         <span class="items login-signup">로그인/회원가입</span>
     </div>
     
-    <!-- 이미지 추가 -->
-    <div class="image-container">
-        <img src="https://cdn.pixabay.com/photo/2017/09/19/21/30/fashion-2766711_1280.jpg" alt="Fashion Image 1">
-        <img src="https://cdn.pixabay.com/photo/2021/11/05/12/27/woman-6771288_1280.jpg" alt="Fashion Image 2">
-        <img src="https://cdn.pixabay.com/photo/2016/11/29/01/34/man-1866572_1280.jpg" alt="Fashion Image 3">
+    <!-- 이미지 슬라이드 추가 -->
+    <div class="slider-container">
+        <div class="slider">
+            <img src="https://cdn.pixabay.com/photo/2019/04/03/18/11/woman-4100999_1280.jpg" alt="Fashion Image 1">
+            <img src="https://cdn.pixabay.com/photo/2016/03/27/17/40/man-1283231_1280.jpg" alt="Fashion Image 2">
+            <img src="https://cdn.pixabay.com/photo/2016/10/31/02/29/woman-1784755_1280.jpg" alt="Fashion Image 3">
+            <img src="https://cdn.pixabay.com/photo/2016/11/29/01/34/man-1866574_1280.jpg" alt="Fashion Image 4">
+        </div>
+        <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
+        <button class="next" onclick="moveSlide(1)">&#10095;</button>
     </div>
+
+    <script>
+        let currentIndex = 0;
+        const slider = document.querySelector('.slider');
+        const images = document.querySelectorAll('.slider img');
+        const totalImages = images.length;
+
+        // 슬라이드 이동 함수
+        function moveSlide(direction) {
+            currentIndex += direction;
+
+            if (currentIndex < 0) {
+                currentIndex = totalImages - 1;
+            } else if (currentIndex >= totalImages) {
+                currentIndex = 0;
+            }
+
+            const offset = -currentIndex * 1200; // 이미지 하나의 너비만큼 이동 (1200px로 변경)
+            slider.style.transform = `translateX(${offset}px)`;
+        }
+
+        // 3초마다 자동으로 슬라이드 변경
+        setInterval(() => {
+            moveSlide(1);
+        }, 2000); // 3000ms = 3초
+
+    </script>
 </body>
 </html>
-

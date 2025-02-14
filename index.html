@@ -25,6 +25,12 @@
             border-bottom: 2px solid black;
         }
         
+        .top-left a {
+            text-decoration: none;
+            color: black;
+            cursor: pointer;
+        }
+
         .items {
             font-size: 2rem;
             font-weight: bold;
@@ -77,14 +83,14 @@
 
         .next {
             right: 10px;
-        }
+        }   
 
     </style>
 </head>
 <body>
     <div class="top-left">
-        Acatio
-        <span class="items">랭킹</span>
+        <a href="#" onclick="reloadPage()">Acatio</a>
+        <span class="items"><a href="ranking.html">랭킹</a></span>
         <span class="items">상품</span>
         <span class="items">셀렉샵</span>
         <span class="items">메거진</span>
@@ -129,8 +135,12 @@
         // 3초마다 자동으로 슬라이드 변경
         setInterval(() => {
             moveSlide(1);
-        }, 2000); // 3000ms = 3초
+        }, 2000); // 2000ms = 2초
 
+        // 페이지 새로고침 함수
+        function reloadPage() {
+            window.location.reload();
+        }
     </script>
 </body>
 </html>
